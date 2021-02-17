@@ -1,0 +1,82 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <h2 style="text-align:center;">Post:</h2>
+    <div class="post">
+        <h1 class="posttitle  ">{{ post.title }}</h1>
+        <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
+        <hr>
+        {% if post.image %}
+        <img style="width:90%;" class="thumbnail" src="{{ post.image.url }}">
+        {% else %}
+        <p><strong>No Image!</strong></p>
+        {% endif %}
+
+
+
+        {% if post.published_date %}
+            <div class="date postdate">
+<!--                {{ post.published_date }}-->
+            </div>
+        {% else %}
+            <a style="background-color:black;color:white; margin-bottom:5px;" class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+        {% endif %}
+<!--        <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>-->
+    </div>
+
+    {% if user.is_authenticated %}
+            <div style="color:red;
+                         width:52px;
+                         background-color:#E1E6E8;
+                         border: 0px solid white;"
+                 class="comments">
+                <a style="margin-bottom:10px; " class="btn btn-primary " href="{% url 'post_edit' pk=post.pk %}"><span class="fa fa-pencil"></span></a>
+                <a style="" id="postdeletelbtn" class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"><span class="fa fa-trash"></span></a>
+            </div>
+
+<!--          <a id="posteditbtn4" class="btn btn-primary comments" href="{% url 'post_edit' pk=post.pk %}">-->
+<!--              <span class="fa fa-pencil"></span>-->
+<!--          </a>-->
+
+<!--          <a id="postdeletelbtn" class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}">-->
+<!--              <span class="fa fa-remove"></span>-->
+<!--          </a>-->
+
+      {% endif %}
+
+
+
+    <hr>
+<!--    <a class="btn btn-primary btn-comment comments " href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>-->
+
+    <div style="color:red;
+                width:52px;
+                background-color:#E1E6E8;
+                border: 0px solid white;
+                overflow-wrap: break-word;"
+                class="comments">
+        <a style=" " class="btn btn-primary " href="{% url 'add_comment_to_post' pk=post.pk %}"><span class="fa fa-comment"></span></a>
+    </div>
+
+    <div class="container ">
+       <h2  style="text-align:center;">Comments:</h2>
+        {% for comment in post.comments.all %}
+            <br>
+            {% if user.is_authenticated or comment.approved_comment %}
+                <div class="comment comments">
+                    <p>@{{ comment.author }}</p>
+                    {{ comment.created_date }}
+                    <hr>
+                    <p>{{ comment.text|safe|linebreaks }}</p>
+                    {% if not comment.approved_comment %}
+                        <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
+                        <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="fa fa-check"></span></a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% empty %}
+                <p style="text-align:center;"> No Comments!</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+   <div class="commentform">
+        <h1>New Comment</h1>
+        <form class="commentforminput" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if user.is_authenticated %}
+                <button id="commentformbtn" type="submit" class="btn btn-default">Post Comment</button>
+            {% else %}
+                <button onclick="myFunction()" id="commentformbtn" type="submit" class="btn btn-default">Post Comment</button>
+            {% endif %}
+        </form>
+    </div>
+
+    <script>
+        var editor = new MediumEditor('.editable');
+
+        function myFunction() {
+        alert("Your comment has been added, wait for the admin to accept it!");
+         }
+    </script>
+{% endblock %}

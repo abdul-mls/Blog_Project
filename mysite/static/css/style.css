@@ -1,0 +1,102 @@
+.nav-item {
+    color:white;
+}
+
+body{
+    background: #e1e6e8;
+
+}
+
+.post{
+    border: 2px solid black;
+    border-radius:5px;
+    width: 30%;
+    height: 50%;
+    margin: 20px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+    color: black;
+    text-align: center;
+}
+
+.title{
+    color: black;
+}
+
+.commentform{
+    border: 2px solid black;
+    width: 50%;
+    height: 50%;
+    margin: 50px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+    text-align: center
+
+}
+
+.commentforminput{
+    width: 50%;
+    height: 50%;
+    margin: 50px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+}
+
+#commentformbtn{
+    color:white;
+    background: black;
+
+}
+
+.postedit{
+    color: black;
+}
+
+#posteditbtn{
+
+
+
+}
+
+#posteditbtn1{
+
+}
+
+.comments{
+     border: 2px solid black;
+    width: 50%;
+    height: 50%;
+    margin: 2px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+    text-align: center
+}
+
+.postdelete{
+    border: 2px solid black;
+    width: 50%;
+    height: 50%;
+    margin: 50px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+    text-align: center
+}
+
+
+
+#posteditbtn{
+
+
+}
+
+.comment{
+ border: 2px solid black;
+    border-radius:5px;
+    width: 30%;
+    height: 50%;
+    margin: 20px auto;
+    background: #FFFFFF;
+    overflow-wrap: break-word;
+    color: black;
+    text-align: center;
+}
